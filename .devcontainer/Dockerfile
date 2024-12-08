@@ -1,32 +1,22 @@
-# Gunakan image PHP resmi dengan versi terbaru yang kompatibel dengan Laravel
-FROM php:8.2-cli
+# [Choice] PHP version (use -bullseye variants on local arm64/Apple Silicon): 8, 8.1, 8.0, 7, 7.4, 7.3, 8-bullseye, 8.1-bullseye, 8.0-bullseye, 7-bullseye, 7.4-bullseye, 7.3-bullseye, 8-buster, 8.1-buster, 8.0-buster, 7-buster, 7.4-buster
+ARG VARIANT=8-bullseye
+FROM mcr.microsoft.com/vscode/devcontainers/php:0-${VARIANT}
 
-# Install dependensi untuk PHP, MySQL/MariaDB client, dan Composer
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg62-turbo-dev \
-    libfreetype6-dev \
-    libzip-dev \
-    unzip \
-    git \
-    libmysqlclient-dev \
-    && rm -rf /var/lib/apt/lists/*
+# Install MariaDB client
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get install -y mariadb-client \ 
+    && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Install php-mysql driver
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Install MySQL/MariaDB client
-RUN apt-get update && apt-get install -y mysql-client
+# [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
+ARG NODE_VERSION="none"
+RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
-# Install PHP extensions untuk Laravel (jika diperlukan)
-RUN docker-php-ext-configure zip
-RUN docker-php-ext-install gd zip
+# [Optional] Uncomment this section to install additional OS packages.
+# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && apt-get -y install --no-install-recommends <your-package-list-here>
 
-# Set direktori kerja di dalam container
-WORKDIR /workspace
-
-# Expose port untuk PHP built-in server (opsional)
-EXPOSE 8000
-
-# Perintah untuk menjalankan PHP Built-in server saat container dijalankan (opsional)
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
+# [Optional] Uncomment this line to install global node packages.
+# RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1

