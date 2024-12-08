@@ -1,0 +1,28 @@
+{
+    "name": "Laravel 11 Development Environment",
+    "image": "php:8.2-cli",  // Ini adalah base image untuk PHP
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "extensions": [
+      "bmewburn.vscode-intelephense-client", // PHP IntelliSense
+      "felixfbecker.php-debug",             // PHP Debug
+      "dbaeumer.vscode-eslint",             // ESLint
+      "xdebug.php-debug"                   // Xdebug
+    ],
+    "postCreateCommand": "composer install", // Setelah container dibuat, jalankan perintah composer install
+    "forwardPorts": [
+      8000
+    ],
+    "mounts": [
+      "source=${localWorkspaceFolder},target=/workspace,type=bind"
+    ],
+    "remoteUser": "www-data", // Atur pengguna default menjadi www-data (untuk Laravel)
+    "containerEnv": {
+      "COMPOSER_ALLOW_SUPERUSER": "1" // Izinkan Composer untuk dijalankan sebagai superuser
+    }
+  }
+  
